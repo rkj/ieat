@@ -1,0 +1,39 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Favourites</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<table>
+						<thead>
+							<tr>
+								<th><%= sortingTag("Name", "name") %></th>
+								<th><%= sortingTag("Description", "description") %></th>
+								<th><%= sortingTag("Author", "ownerLogin") %></th>
+								<th><%= sortingTag("Percent", "percentFulfilled") %></th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= render :partial => "favourite", :collection => @recipes %>
+						</tbody>
+					</table>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer"></div>
+</div>

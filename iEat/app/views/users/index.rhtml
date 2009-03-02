@@ -1,0 +1,17 @@
+<% if current_user %>
+Logged user: <%= current_user.login %><br />
+<%= link_to "View profile (as other can see it)", "/user/#{current_user.login}"%><br />
+<%= link_to "Edit profile", :action => "edit"%><br />
+<%= link_to "Friends", :action => "friends" %><br />
+<%= link_to "Favourite recipes", :action => "favourites" %><br />
+<%= link_to "Currently edited recipes", :action => "editedRecipes" %><br />
+<%= link_to "Your menu", :controller => "menus", :action => "list" %><br />
+<%= link_to "Shopping list", :controller => "menus", :action => "shoppingList" %><br />
+<%= link_to "Containers", :controller => "containers" %><br />
+<%= link_to "Disliked products", :action => "dislikedProducts" %><br />
+<%= link_to "Logout", :action => "logout" %> 
+
+<% else %>
+You are not logged in.<br />
+<%= link_to "Login", :action => "login" %> <%= link_to "Register", :action => :new_user %>
+<% end %>

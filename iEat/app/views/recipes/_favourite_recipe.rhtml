@@ -1,0 +1,12 @@
+<% favRecipe = "favouriteRecipe_#{favourite_recipe.id}"%>
+<li id="<%= favRecipe %>" style="display:none;">
+	<span>
+	<%= link_to favourite_recipe.name, {:action => :show, :controller => :recipes, :id => favourite_recipe.id}, :class => "main" %> 
+	</span>
+	<small>
+	(<%= number_to_percentage(favourite_recipe.percentFulfilled(current_user.id)*100, :precision => 1) %> avail)
+		<%= link_to_remote "Remove", 
+			:url => {:action => :removeFromFavourites, :controller => :recipes, :id => favourite_recipe.id }, 
+			:method => :delete
+		%></small>
+</li>

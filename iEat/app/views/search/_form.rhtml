@@ -1,0 +1,73 @@
+<% 	form_tag("/search/result") do 
+		#:update => { :success => ingredientsId, :failure => errorsId },
+		#:before => "Element.show('spinner'); $('#{errorsId}').update('');",
+		#:complete => "Element.hide('spinner')",	
+		#:failure => 
+		#	"Element.show('#{errorsId}');" + 
+		#	visual_effect(:pulsate, errorsId) +
+		#	visual_effect(:fade, errorsId, :duration => 1, :delay => 10),
+		#:success => visual_effect(:highlight, ingredientsId),	
+		#:position => "bottom") do %>
+
+	<div class="recipe-step-panel">
+		<div class="recipe-step-header">
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipe-step-header">
+						<h2>Search</h2>
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipes">
+						<table class="recipes-search-form">
+							<tr>
+								<td>
+									Search:
+								</td>
+								<td>
+									<%= text_field_tag 'query', params[:query]  %>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Search by recipe name:
+								</td>
+								<td>
+									<%= text_field_tag 'queryNames', params[:queryNames] %>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Search by ingredients:
+								</td>
+								<td>
+									<%= text_field_tag 'queryIngredients', params[:queryIngredients] %>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<%= check_box_tag 'fridge', '1', params[:fridge] %> &nbsp; Sort by fridge
+								</td>
+								<td>
+									<%= submit_tag 'Szukaj', {:class => "button"} %>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="recipe-step-shadow">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="recipe-step-footer">
+		</div>
+	</div>
+
+<% end %>

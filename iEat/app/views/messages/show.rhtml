@@ -1,0 +1,18 @@
+<div id="messages-menu">
+<%= render :partial => "menu" %>
+</div>
+<br />
+<br />
+Message from: <%= render :partial => "/users/user", :locals => { :user => @message.author } %><br />
+Sent <%= distance_of_time_in_words Time.now, @message.date_created, false %> ago<br />
+Subject: <%= @message.subject %><br />
+Message: <%= @message.message %>
+<br />
+<br />
+<%= link_to "Reply", :action => :compose, :id => @message.author.id %>
+<% if @message.message_type.id == 3 %>
+	<br />
+	<br />
+	<%= link_to 'Accept invitation', :action => "accept" %>
+	<%= link_to 'Decline invitation', :action => "decline" %>
+<% end %>

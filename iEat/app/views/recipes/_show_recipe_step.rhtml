@@ -1,0 +1,39 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Step <%= show_recipe_step.step_order_no %>.: <%= show_recipe_step.name %></h2>
+				</td>
+				<td>
+					<%= button_to_function "", :class => "tog collapseTog" do |page|
+						require 'pp'
+							page.visual_effect :toggle_blind, "recipe-step-#{show_recipe_step.step_order_no}"
+							pp (page.inspect)
+					  end
+					%>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="recipe-step-<%= show_recipe_step.step_order_no %>">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-ingredients">
+					<b>Składniki:</b>
+					<ul>
+						<%= render :partial => "show_step_ingredients", :collection => show_recipe_step.step_ingredients %>
+					</ul>
+				</td>
+				<td class="recipe-step-description">
+					<b>Opis:</b><br />
+					<%= show_recipe_step.description %>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+	</div>
+</div>

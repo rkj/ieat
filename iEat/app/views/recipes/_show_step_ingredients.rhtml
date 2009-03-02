@@ -1,0 +1,13 @@
+<% if (current_user.isDislikedProduct? show_step_ingredients.product.name) %>
+	<li class="disliked-product">
+<% else %>
+	<% if (current_user.hasProduct? show_step_ingredients.product.name) %>
+		<li class="has-product">
+	<% else %>
+		<li>
+	<% end %>
+<% end %>
+<%= h show_step_ingredients.amount%>
+<%= h show_step_ingredients.unit.name %>
+<%= h show_step_ingredients.product.name %>
+</li>

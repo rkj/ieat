@@ -1,0 +1,7 @@
+page << <<-END
+no = 1
+$$("#recipe_title").each(function(value, index) {
+value.innerHTML = "Step " + no;
+no += 1
+});
+END

@@ -1,0 +1,5 @@
+<li id="friend_<%= friendship.friend.id %>">
+<%= render :partial => "/users/user", :locals => {:user => friendship.friend} %>
+<%= "Waiting for acceptance" unless friendship.accepted %>
+<%= link_to_remote "Remove", :url => {:controller => "users", :action => "removeFriendship", :id => friendship } %>
+</li>

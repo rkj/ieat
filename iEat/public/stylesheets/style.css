@@ -1,0 +1,925 @@
+*{
+padding:0;
+margin:0;
+}
+
+body
+{
+	background-color: white;
+	font-family: arial;
+	font-size: 12px;
+}
+
+ul
+{
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+#Container
+{
+	width: 826px;
+	margin: 0px auto;
+}
+
+#TopPart
+{
+	width: 826px;
+	height: 206px;
+	float: left;
+}
+
+#Top_left
+{
+	background: url("/images/logo.png") top left no-repeat;
+	width: 563px;
+	height: 206px;
+	float: left;
+}
+
+
+#Top_right
+{
+	background: url("/images/head_right.gif") top left repeat-x;
+	width: 263px;
+	height: 201px;
+	float: right;
+	padding-top: 5px;
+}
+
+#Logo
+{
+	padding-left: 250px;
+	padding-top: 15px;
+}
+
+.header-left
+{
+    color: #be2f35;
+	font-family: Candara;
+	font-size: 43px;
+}
+
+.header-right
+{
+    color: #7a8e25;
+	font-family: Candara;
+	font-size: 43px;
+}
+
+.link
+{
+    color: #494a47;
+	font-family: Candara;
+	font-size: 14px;
+	text-decoration: none;
+	padding-left: 27px;
+}
+
+fieldset
+{
+	border: none;
+	float: left;
+	padding-left: 14px;
+	padding-top: 5px;
+}
+
+input
+{
+	float: left;
+}
+
+.button
+{
+	float: right;
+	background: url("/images/search.gif") top left no-repeat;
+	background-position: 5px 0px;
+	width: 65px;
+	height: 25px;
+	border: none;
+	padding-left: 8px;
+	padding-top: 4px;
+	color: white;
+	font-size: 11px;
+	margin-top: -22px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+*>.button
+{
+    float: left;
+    margin-top: -4px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 5px;
+    padding-top: 0px;
+}
+
+.button:hover
+{
+	text-decoration: underline;
+}
+
+#Welcome
+{
+	float: left;
+	padding: 8px;
+	padding-top: 5px;
+	color: white;
+}
+
+h4
+{
+	font-size: 13px;
+	line-height: 25px;
+}
+
+p
+{
+	text-align: justify;
+}
+
+#Menu
+{
+	width: 812px;
+	height: 32px;
+	float: right;
+	margin-top: -40px;
+}
+
+#Menu a
+{
+	width: 69px;
+	line-height: 32px;
+    vertical-align: middle;
+	float: right;
+	background: url("/images/topmenu.gif") top left no-repeat;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+}
+
+#Menu a:hover, #Menu a.active
+{
+	text-decoration: underline;
+}
+
+#CentralPart
+{
+	width: 812px;
+    clear: both;
+    background: url("/images/bac.gif") top left repeat-y;
+    margin-left: 15px;
+}
+
+*>#CentralPart
+{
+
+}
+
+#LeftPart
+{
+	width: 520px;
+	float: left;
+	margin-right: 9px;
+	padding: 10px;
+}
+
+#RightPart
+{
+	float: right;
+	width: 263px;
+}
+
+.cleaner
+{
+    clear: both;
+}
+
+#Page
+{
+	width: 520px;
+	padding-top: 20px;
+}
+
+#Left_menu
+{
+	float: left;
+	width: 60px;
+	height: 16px;
+	margin-top: -10px;
+	margin-left: -5px;
+}
+
+.contact
+{
+    background: url("/images/email.gif") top left no-repeat;
+    width: 15px;
+    height: 16px;
+    float: left;
+    padding-right: 3px;
+}
+
+.contact span
+{
+	display: none;
+}
+
+.home
+{
+    background: url("/images/home.gif") top left no-repeat;
+    width: 15px;
+    height: 16px;
+    float: left;
+    padding-right: 3px;
+}
+
+.home span
+{
+	display: none;
+}
+
+
+.personal
+{
+    background: url("/images/personal.gif") top left no-repeat;
+    width: 15px;
+    height: 16px;
+    float: left;
+}
+
+.personal span
+{
+	display: none;
+}
+
+h1
+{
+	font-size: 16px;
+	color: white;/*#5a5551;*/
+	line-height: 25px;
+	font-weight: bold;
+}
+
+h2
+{
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: bold;
+	color: white;
+}
+
+h3
+{
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #5a5551;
+}
+
+h5
+{
+	font-size: 12px;
+}
+
+h6, #RightPart a.header
+{
+	font-size: 15px;
+	color: white;
+	font-weight: bold;
+}
+
+.article_head
+{
+	border-bottom: 2px solid #891f10;
+}
+
+.article_body p
+{
+	padding-top: 8px;
+	padding-bottom: 5px;
+}
+
+.article_comments a
+{
+	color: black;
+}
+
+.article_comments
+{
+    padding-top: 5px;
+	padding-bottom: 15px;
+}
+
+.photo
+{
+	padding-top: 8px;
+	padding-bottom: 5px;
+	float: left;
+	padding-right: 8px;
+}
+
+.rightpart-header
+{
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	width: 263px;
+    background: url("/images/pages.gif") top left repeat-x;
+    line-height: 38px;
+    text-indent: 8px;
+    margin-top: 5px;
+}
+
+a.rightpart-header-link
+{
+	padding-top:5px;
+}
+
+div.rightpart-header ul
+{
+	padding-top:15px;
+}
+
+.view-all
+{
+	color: #000000 !important;
+	padding-top: 5px;
+}
+
+#RightPart a
+{
+	color: white;
+  font-size: 13px;
+	display: block;
+	padding-left: 8px;
+  line-height: 25px;
+	text-decoration: none;
+}
+
+#RightPart a:hover
+{
+	text-decoration:underline;
+}
+
+.main
+{
+    background: url("/images/arrow.gif") top left no-repeat;
+    background-position: 8px 3px;
+    text-indent: 23px;
+}
+
+.child
+{
+    text-indent: 36px;
+}
+
+.friend
+{
+	background: url("/images/avatar.png") top left no-repeat;
+	background-position: 8px 3px;
+	text-indent: 23px;
+}
+
+#Bottom
+{
+	width: 812px;
+	background: url("/images/bottom.gif") top left no-repeat;
+	height: 55px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 7px;
+}
+
+*>#Bottom
+{
+	margin-left: 15px;
+}
+
+.down_left
+{
+	font-size: 11px;
+	text-align: left;
+	padding-top: 8px;
+	padding-left: 8px;
+	float: left;
+}
+
+.down_right
+{
+	font-size: 11px;
+	text-align: right;
+	padding-top: 8px;
+	float: right;
+	padding-right: 8px;
+}
+
+.down_right a, .down_left a
+{
+    text-decoration: none;
+    color: black;
+}
+
+
+.down2
+{
+	padding-bottom: 10px;
+	float: right;
+	display: none;
+}
+
+.down2 img
+{
+    border: 0px;
+}
+
+#login-newuser
+{
+	font-size:12px;
+	color:white;
+	padding:5px;
+}
+
+#login-newuser a
+{
+	color:white;
+	font-size:14px;
+}
+
+.login-table
+{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.login-button
+{
+	background: url("/images/search.gif") top left no-repeat;
+	background-position: 5px 0px;
+	width: 65px;
+	height: 25px;
+	border: none;
+	padding-left: 6px;
+	color: white;
+	font-size: 12px;
+}
+
+.login-button:hover
+{
+	text-decoration: underline;
+}
+
+td.login-table-label
+{
+	color:white;
+	font-size:14px;
+	width:120px;
+	padding:5px;
+}
+
+td.recipe-step-header
+{
+	padding-left:4px;
+}
+
+td.recipes
+{
+	font-size:12px;
+	width:466px;
+	padding-bottom:5px;
+	border-left:solid 1px #7F1C0C;
+	background-color:white;
+	padding:4px;
+}
+
+td.recipe-step-ingredients
+{
+	width:150px;
+	padding-bottom:5px;
+	border-left:solid 1px #7F1C0C;
+	border-right:dotted 1px #545454;
+	background-color:white;
+	padding:4px;
+}
+
+td.recipe-step-ingredients li
+{
+	padding-left:2px;
+	padding-right:2px;
+}
+
+td.recipe-step-description
+{
+	width:316px;
+	padding-bottom:5px;
+	background-color:white;
+	padding:4px;
+}
+
+/* new layout */
+
+td, table, img
+{
+	border-spacing:0px;
+}
+
+table.recipe-step-content
+{
+	width:500px;
+}
+
+table.recipes-search-form td
+{
+	padding:5px;
+}
+
+div.recipe-step-panel
+{
+	margin-left:15px;
+	color:#545454;
+	font-size:11px;
+	width:500px;
+}
+
+div.recipe-edit-step-panel
+{
+	color:#545454;
+	font-size:11px;
+	width:500px;
+}
+
+div.recipe-step-header
+{
+	background:#D01F3C url(/images/top_green.gif) no-repeat scroll left top;
+	margin:0pt;
+	min-height:25px;
+	width:500px;
+	overflow:hidden;
+	padding:1px 0pt 0pt;
+}
+
+div.recipe-header
+{
+	background:#D01F3C url(/images/top_green_wide.gif) no-repeat scroll left top;
+	margin:0pt;
+	min-height:25px;
+	width:510px;
+	overflow:hidden;
+	padding:1px 0pt 0pt;
+}
+
+.recipe-header h2
+{
+	margin-left:4px;
+}
+
+div.recipe-step-footer
+{
+	background:#FFFFFF url(/images/bottom_red.gif) no-repeat scroll left bottom;
+	clear:both;
+	padding-bottom:25px;
+	padding-top:10px;
+	padding-left:6px;
+	padding-right:25px;
+	margin-bottom:10px;
+}
+
+div.recipe-footer
+{
+	background:#FFFFFF url(/images/bottom_red_wide.gif) no-repeat scroll left bottom;
+	clear:both;
+	padding-bottom:25px;
+	padding-top:10px;
+	padding-left:6px;
+	padding-right:25px;
+	margin-bottom:10px;
+}
+
+div.recipe-edit-footer
+{
+	background:#FFFFFF url(/images/bottom_red_wide_grad.gif) no-repeat scroll left bottom;
+	clear:both;
+	padding-bottom:25px;
+	padding-top:15px;
+	padding-left:6px;
+	padding-right:25px;
+	margin-bottom:10px;
+	height:5px;
+}
+
+div.recipe-edit-add-ingredient
+{
+	padding:4px;
+	margin-right:15px;
+	border:dotted 1px #545454;
+	margin-bottom:5px;
+}
+
+td.recipe-edit-input input
+{
+	width:315px;
+}
+
+td.recipe-edit-input textarea
+{
+	width:315px;
+}
+
+td.recipe-step-shadow
+{
+	background-image:url(/images/shadow_red.gif);
+	background-repeat:repeat-y;
+	width:16px;
+}
+
+td.recipe-edit-step-content
+{
+	width:474px;
+	background-color:white;
+	border-left:1px solid #7F1C0C;
+	padding:4px;
+}
+
+td.recipe-content
+{
+	width:500px;
+	height:200px;
+	background-image:url("/images/recipe-content-bgnd.png");
+	background-repeat:repeat-x;
+	/*background-color:white;*/
+	border-left:1px solid #7F1C0C;
+	padding:4px;
+	vertical-align:top;
+}
+
+td.recipe-steps
+{
+	border-left:1px solid #7F1C0C;
+	padding-left:10px;
+	padding-top:10px;
+	width:484px;
+}
+
+input.recipe-edit-input
+{
+	border:solid 1px #545454;
+}
+
+td.recipe-edit-submit
+{
+	padding-top:10px;
+}
+
+td.recipe-edit-step-label
+{
+	font-weight:bold;
+	font-size:14px;
+}
+
+div.recipe-step-panel a, div.recipe-edit-step-panel a
+{
+	text-decoration:underline;
+	color:#434343;
+	padding-left:10px;
+}
+
+div.recipe-step-panel a:hover, div.recipe-edit-step-panel a:hover
+{
+	text-decoration:underline;
+	color:#657811;
+}
+
+a.collapseTog, a.expandTog
+{
+	margin-right:17px;
+}
+
+a.expandTog
+{
+	background:transparent url(/images/toggle-button.png) no-repeat scroll 0pt -22px;
+}
+
+
+input.tog
+{
+	display:inline;
+	float:right;
+	height:22px;
+	margin-top:1px;
+	margin-right:25px;
+	padding:0pt;
+	width:22px;
+	border:none;
+}
+
+input.rtog
+{
+	display:inline;
+	float:right;
+	height:22px;
+	margin-top:1px;
+	margin-right:10px;
+	padding:0pt;
+	width:22px;
+	border:none;
+}
+
+input.collapseTog
+{
+	background:transparent url(/images/toggle-button.png) no-repeat scroll left top;
+}
+
+ul.recipes li
+{
+	padding-top:5px;
+}
+
+span.recipe-percentage
+{
+	padding-left:10px;
+}
+
+input.common-button
+{
+	background-color:#718810;
+	border:solid 1px #BEC888;
+	color:white;
+	font-size:14px;
+	text-decoration:none;
+	padding:2px;
+}
+
+input.common-button:hover
+{
+	text-decoration:underline;
+}
+
+li.recipe-list-item
+{
+	border-bottom:1px dotted #545454;
+	padding-bottom:5px;
+}
+
+div.comments-and-ratings
+{
+	padding-left:15px;
+}
+
+/* user profile */
+table.edit-user-profile td
+{
+	padding:5px;
+}
+
+td.user-profile-label
+{
+	padding-left:5px;
+	font-weight:bold;
+}
+
+td.user-profile-entry
+{
+	padding-left:2px;
+}
+
+table.containers td
+{
+	padding:2px;
+}
+
+div.recipe-links
+{
+	padding-top:5px;
+	padding-bottom:10px;
+}
+
+div.recipe-links a
+{
+	text-decoration:underline;
+	color:white;
+}
+
+div.recipe-links a:hover
+{
+	text-decoration:underline;
+	color:#657811;
+}
+
+td.rightpart-header
+{
+	width:80%;
+	padding-top:2px;
+}
+
+td.rightpart-header-button
+{
+	padding-left:20px;
+	padding-top:8px;
+}
+
+/* rating */
+#star-rater {
+	list-style:none;
+	margin: 0px;
+	padding:0px;
+	width: 150px;
+	height: 28px;
+	position: relative;
+	overflow:hidden;
+	background: url(/images/star_inactive.png) top left repeat-x;
+	float: left;
+	margin-right: 10px;
+}
+#star-rater li {
+	width: 30px;
+	height: 28px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+#star-rater li a {
+	display:block;
+	width:30px;
+	height: 28px;
+	line-height: 28px;		
+	text-decoration: none;
+	text-indent: -9000px;
+	z-index: 20;
+	position: absolute;
+	padding: 0px;
+	overflow:hidden;
+}
+#star-rater li a:hover {
+	background: url(/images/star_active.png) left bottom;
+	z-index: 2;
+	left: 0px;
+	border:none;
+}
+#star-rater a.one-star:hover {
+	left: 0px;
+}
+#star-rater a.one-star:hover {
+	width: 30px;
+}
+#star-rater a.two-stars{
+	left: 30px;
+}
+#star-rater a.two-stars:hover{
+	width: 60px;
+}
+#star-rater a.three-stars{
+	left: 60px;
+}
+#star-rater a.three-stars:hover{
+	width: 90px;
+}
+#star-rater a.four-stars{
+	left: 90px;
+}	
+#star-rater a.four-stars:hover{
+	width: 120px;
+}
+#star-rater a.five-stars{
+	left: 120px;
+}
+#star-rater a.five-stars:hover{
+	width: 150px;
+}
+
+/* tag-cloud */
+#tag-cloud a {
+	color: white; /*#c3d9ff;*/
+	line-height: 25px;
+	text-decoration: none;
+}
+#tag-cloud a:hover {
+	text-decoration: underline;
+}
+.nube1 {
+	font-size: 1.0em;
+}
+.nube2 {
+	font-size: 1.3em;
+}
+.nube3 {
+	font-size: 1.6em;
+}
+.nube4 {
+	font-size: 1.9em;
+}
+.nube5 {
+	font-size: 2.2em;
+}
+.nube6 {
+	font-size: 2.5em;
+}
+
+li.disliked-product {
+	font-weight: bold;
+	color: red;
+}
+li.has-product {
+	font-weight: bold;
+	color: green;
+}

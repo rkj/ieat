@@ -1,0 +1,19 @@
+<tr id="container_product<%=container_product.id%>">
+	<td><%= h format_product container_product %></td>
+	<% if container_product.expiration_date.nil? %>
+		<td>Unknown expiration date</td>
+	<% else %>
+		<% if (container_product.expiration_date < Date.today) %>
+			<td style="color: red;">Expired <%= distance_of_time_in_words container_product.expiration_date, Date.today, false %> ago</td>
+		<% elsif (container_product.expiration_date == Date.today ) %>
+			<td style="color: red;">Expires today!</td>
+		<% elsif (container_product.expiration_date == Date.today + 1.day) %>
+			<td>Expires tommorow</td>
+		<% else %>
+			<td>Expires in <%= distance_of_time_in_words -1.days.from_now, container_product.expiration_date, false %></td>
+		<% end %>
+	<% end %>
+	<td><%= link_to_remote 'Remove', 
+	:url => { :action => :deleteContainerProduct, :id => container_product.id },
+	:method => :delete %></td>
+</tr>

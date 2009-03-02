@@ -1,0 +1,5 @@
+page << "var wasVisible = false"
+page.select("#container_product#{params[:id]}").each do |el| 
+  page << efect_and_remove("value", "switchOff")
+end
+page << show_first_nonvisible("#container_products li")

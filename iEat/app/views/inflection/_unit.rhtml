@@ -1,0 +1,15 @@
+<tr>
+	<td><%= unit.name %></td>
+	<td><span id="up_<%= unit.id %>">
+		<%= nilIfEmpty(unit.name_plural) || "[Brak]"  %>
+	</span>
+	<%= in_place_editor "up_#{unit.id}", 
+		:url => { :action => "set_unit_name_plural", :id => unit.id } %>
+	</td>
+	<td><span id="ug_<%= unit.id %>">
+		<%= nilIfEmpty(unit.name_genitive) || "[Brak]"  %>
+	</span>
+	<%= in_place_editor "ug_#{unit.id}",
+		:url => { :action => "set_unit_name_genitive", :id => unit.id } %></td>
+	<td><%= link_to "Usuń", :action => :destroy_unit, :id => unit.id %></td>
+</tr>

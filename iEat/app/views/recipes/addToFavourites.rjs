@@ -1,0 +1,3 @@
+page.insert_html(:top, "fav_list", :partial => "favourite_recipe", :locals => { :favourite_recipe => @recipe })
+page.visual_effect(:fade, "add_to_fav_#{@recipe.id}")
+page << hide_or_show_elements()

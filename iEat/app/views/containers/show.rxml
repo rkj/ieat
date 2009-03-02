@@ -1,0 +1,18 @@
+xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
+xml.container do
+  xml.id @container.id
+  xml.name @container.name
+  xml.type_id @container.container_type.id
+  xml.owner_id @container.owner.id
+  xml.container_products do
+    @container.container_products.each do |cp|
+      xml.container_product do
+        xml.id cp.id
+        xml.product_id cp.product.id
+        xml.unit_id cp.unit_id
+        xml.amount cp.amount
+        xml.expiration_date cp.expiration_date
+      end
+    end
+  end
+end

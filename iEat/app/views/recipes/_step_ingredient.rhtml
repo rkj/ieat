@@ -1,0 +1,11 @@
+<% ingredientId = "ingredient#{step_ingredient.id}" %>
+<div style="padding-bottom: 3px;" id="<%= ingredientId %>">
+<%= h step_ingredient.amount %> 
+<%= h step_ingredient.unit.name %> 
+<%= h step_ingredient.product.name %>
+<%= link_to_remote 'Remove', 
+		:url => { :action => :deleteStepIngredient, :id => step_ingredient.id },
+		:confirm => "Are you sure?",
+		:method => :delete,
+		:success => visual_effect(:switch_off, ingredientId) %> 
+</div>

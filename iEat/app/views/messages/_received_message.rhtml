@@ -1,0 +1,15 @@
+<% if (!received_message.read) %>
+<tr id="message_<%= received_message.id %>" class="message-unread">
+<% else %>
+<tr id="message_<%= received_message.id %>">
+<% end %>
+	<td><%= distance_of_time_in_words Time.now, received_message.date_created, false %> ago</td>
+	<td><%= render :partial => "/users/user", :locals => { :user => received_message.author } %></td>
+	<td><%= link_to received_message.subject, :action => "show", :id => received_message.id %></td>
+	<td><%= link_to_remote 'Remove', 
+			:url => { :action => :deleteAddresseeMessage, :id => received_message.id },
+			:confirm => "Are you sure?",
+			:method => :delete,
+			:update => "messages-menu",
+			:success => visual_effect(:fade, "message_#{received_message.id}") %></td>
+</tr>

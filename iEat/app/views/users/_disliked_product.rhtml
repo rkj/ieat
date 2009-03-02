@@ -1,0 +1,6 @@
+<% spanId = "disliked_product_#{disliked_product.id}"%>
+<span id="<%= spanId %>">
+	<%= disliked_product.name %>
+	<%= link_to_remote "Remove", :url => { :action => :removeDislikedProduct, :id => disliked_product.id },
+			:success => visual_effect(:fade, spanId) %>
+</span><br />

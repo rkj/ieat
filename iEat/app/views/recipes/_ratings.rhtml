@@ -1,0 +1,41 @@
+<% if (@your.nil?) %>
+<div style="float: left; padding-right: 50px;">
+Rate: <br />
+<ul id="star-rater">
+	<li><%= link_to_remote( "1", 
+			:url => { :action => :rate, :id => @recipe.id, :rating => 1 },
+			:update => "ratings",
+			:html => { :class => "one-star" }) %></li>
+	<li><%= link_to_remote( "2", 
+			:url => { :action => :rate, :id => @recipe.id, :rating => 2 },
+			:update => "ratings",
+			:html => { :class => "two-stars" }) %></li>
+	<li><%= link_to_remote( "3", 
+			:url => { :action => :rate, :id => @recipe.id, :rating => 3 },
+			:update => "ratings",
+			:html => { :class => "three-stars" }) %></li>
+	<li><%= link_to_remote( "4", 
+			:url => { :action => :rate, :id => @recipe.id, :rating => 4 },
+			:update => "ratings",
+			:html => { :class => "four-stars" }) %></li>
+	<li><%= link_to_remote( "5", 
+			:url => { :action => :rate, :id => @recipe.id, :rating => 5 },
+			:update => "ratings",
+			:html => { :class => "five-stars" }) %></li>
+</ul>
+</div>
+<% else %>
+<div style="float: left; padding-right: 50px;">
+Your rating:<br/>
+<span style="padding:0px; margin:0px; background: url(/images/star_inactive.png); display: block; width: 150px; height: 28px;">
+	<span style="background: url(/images/star_active.png); display: block; height: 28px; width: <%= number_with_precision(@your*150/5, 0)%>px;"></span>
+</span>
+</div>
+<% end %>
+
+<div style="float: left;">
+Average rating:
+<span style="padding:0px; margin:0px; background: url(/images/star_inactive.png); display: block; width: 150px; height: 28px;">
+	<span style="background: url(/images/star_active.png); display: block; height: 28px; width: <%= number_with_precision(@average*150/5, 0)%>px;"></span>
+</span>
+</div>

@@ -1,0 +1,15 @@
+<% if (!invitation_message.read) %>
+<tr id="message_<%= invitation_message.id %>" class="message-unread">
+<% else %>
+<tr id="message_<%= invitation_message.id %>">
+<% end %>
+	<td><%= invitation_message.date_created %></td>
+	<td><%= render :partial => "/users/user", :locals => { :user => invitation_message.addressee } %></td>
+	<td><%= link_to invitation_message.subject, :action => "show", :id => invitation_message.id %></td>
+	<td><%= link_to_remote 'Remove', 
+			:url => { :action => :deleteAddresseeMessage, :id => invitation_message.id },
+			:confirm => "Are you sure?",
+			:method => :delete,
+			:update => "messages-menu",
+			:success => visual_effect(:fade, "message_#{invitation_message.id}") %></td>
+</tr>

@@ -1,0 +1,11 @@
+xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
+xml.productsList do
+  xml.products do
+    for p in @products
+      xml.product do
+        xml.id p.id
+        xml.name p.name
+      end
+    end
+  end
+end

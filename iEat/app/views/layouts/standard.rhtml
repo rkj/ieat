@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
+	<%= javascript_include_tag :defaults %>
+	<%= stylesheet_link_tag "style" %>
+	<%= stylesheet_link_tag 'calendar-system.css' %>
+	<%= javascript_include_tag 'calendar', 'calendar-en', 'calendar-setup' %>
+	<%= javascript_tag("window.onload=function(){#{hide_or_show_elements('show', 'hide')}}") %>
+</head>
+<body>
+	<div id="WholePage">
+		<div id="Inner">
+			<div id="Container">
+				<div id="TopPart">
+					
+					<div id="Top_left">
+						<div id="Logo">
+				    		<span class="header-left">i</span>&nbsp;<span class="header-right">Eat</span><br/>
+					    	<a class="link" href="#"><span>www.iEat.com</span></a>
+					  </div>
+					</div>
+					
+					<div id="Top_right">
+						<fieldset>
+							<% form_tag :action => "search", :controller => "recipes" do %>
+							<%= text_field_tag 'query' %>
+							<%= submit_tag "Search", :name => "search", :class => "button" %>
+							<% end %>
+						</fieldset>
+						<div id="Welcome">
+							<h4>Welcome to iEat</h4>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent gravida. Integer eget tellus sed magna condimentum scelerisque. Quisque sed lacus. Morbi consequat pellentesque ipsum. Ut eu nunc et turpis semper auctor. </p>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div id="Menu">
+					<a class="homepage" href="/"><span>Home</span></a>
+					
+					<% if logged_in? %>
+						<a class="about-us" href="/recipes/new"><span>Add</span></a>
+						<a class="products" href="/search"><span>Search</span></a>
+					<% end %>
+					
+				</div>
+				
+				<div id="CentralPart">
+
+					<div id="LeftPart">
+				  	<div id="Left_menu">
+				    	<table>
+				      	<tr>
+				        	<td><%= link_to "<span>Inbox</span>", {:controller => "messages", :action => "inbox"}, :class => "contact" %></td>
+				          <td><%= link_to "<span>Home</span>", "/", :class => "home" %></td>
+				          <td><%= link_to "<span>Personal</span>", {:controller => "users", :action => ""}, :class => "personal" %></td>
+								</tr>
+				      </table>
+				    </div>
+				    <div id="Page">
+							<div>
+								<div class="article_body">
+									<p>
+										<%# if flash[:notice]%>
+										<div id="flash"><%= flash[:notice] %></div>
+										<%# end%>
+										<%= yield :layout %>
+									</p>
+								</div>
+					   	</div>
+					  </div>
+				  </div>
+					
+					<% if logged_in? %>
+					
+						<div id="RightPart">
+							<div class="rightpart-header" id="Favorites">
+								<table>
+									<tr>
+										<td class="rightpart-header">
+											<h6><%= link_to "Favourites", {:controller => :users, :action => :favourites}, :class => "rightpart-header-link" %></h6>
+										</td>
+										<td class="rightpart-header-button">
+											<%= button_to_function "", :class => "rtog collapseTog" do |page|
+													page.visual_effect :toggle_blind, "fav_list"
+											  end
+											%>
+										</td>
+									</tr>
+								</table>
+								<ul>
+									<div id="fav_list">
+									<%= render :partial => "/recipes/favourite_recipe", :collection => current_user.favourites %>
+									</div>
+								</ul>
+							</div>
+						  <div class="rightpart-header" id="Fridge">
+								<table>
+									<tr>
+										<td class="rightpart-header">
+											<h6><%= link_to h(current_user.containers[0].name), 
+											{ :controller => "containers", :action => "show", :id => current_user.containers[0].id },
+											 :class => "rightpart-header-link" %>
+											</h6>
+										</td>
+										<td class="rightpart-header-button">
+											<%= button_to_function "", :class => "rtog collapseTog" do |page|
+													page.visual_effect :toggle_blind, "fridge_list"
+											  end
+											%>
+										</td>
+									</tr>
+								</table>
+					 			<ul id="container_products">
+									<div id="fridge_list">
+										<%= render :partial => "/containers/container_product_short", :collection => current_user.containers[0].container_products %>
+									</div>
+								</ul>
+						  </div>
+						  <div class="rightpart-header" id="Categories">
+								<table>
+									<tr>
+										<td class="rightpart-header">
+											<h6><%= link_to "Popular Tags", {:controller => "tags", :action => "index"}, :class => "rightpart-header-link" %></h6>
+										</td>
+										<td class="rightpart-header-button">
+											<%= button_to_function "", :class => "rtog collapseTog" do |page|
+													page.visual_effect :toggle_blind, "tag_list"
+											  end
+											%>
+										</td>
+									</tr>
+								</table>
+								<ul id="popular_tags">
+									<div id="tag_list">
+										<%= render :partial => "/tags/popular_tag", :collection => popularTags %>
+									</div>
+								</ul>
+						  </div>
+						  <div class="rightpart-header" id="Friends">
+								<table>
+									<tr>
+										<td class="rightpart-header">
+											<h6><%= link_to "Friends", {:controller => "users", :action => "friends"}, :class => "rightpart-header-link" %></h6>									
+										</td>
+										<td class="rightpart-header-button">
+											<%= button_to_function "", :class => "rtog collapseTog" do |page|
+													page.visual_effect :toggle_blind, "friends_div"
+											  end
+											%>
+										</td>
+									</tr>
+								</table>
+								<ul>
+									<div id="friends_div">
+										<%= render :partial => "/users/friendship_invitations" %>
+										<%= render :partial => "/users/friendship", :collection => current_user.friendships %>
+					    		</div>
+								</ul>
+						  </div>
+	 					</div>
+	
+					<% end %>
+
+					<div class="cleaner"></div>
+	
+				</div>
+				
+				<div id="Bottom">
+					<p class="down_left">Copyright © 2008</p>
+					<p class="down_right"><%= image_tag "rails_badge.png" %></p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

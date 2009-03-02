@@ -1,0 +1,32 @@
+<h1>Disliked products</h1>
+
+<div id="disliked-products">
+<%= render :partial => "disliked_product", :collection => @dislikedProducts %>
+</div>
+
+<div id="success"></div>
+<div id="failure"></div>
+
+<%	form_remote_tag(
+		:url => {:action => "addDislikedProduct"}, 
+		:update => { :success => "success", :failure => "failure" },
+		:before => "Element.show('spinner'); $('failure').update('');",
+		:complete => "Element.hide('spinner'); $('product_name').value = ''",	
+		:failure => 
+			"Element.show('failure');" + 
+			visual_effect(:pulsate, 'failure') +
+			visual_effect(:fade, 'failure', :duration => 1, :delay => 10),
+		:success => visual_effect(:highlight, "success"),	
+		:position => "bottom") do %>
+		<table>
+			<tr>
+				<td>Add product:</td>
+				<td style="padding-left: 10px"><%= text_field_with_auto_complete :product, :name, {} %></td>
+				<td style="padding-left: 10px">
+					<%= submit_tag "Add", :name => "add", :class => "common-button" %>
+					<%= image_tag("snake_transparent.gif", :align => 'absmiddle',
+				       :border=> 0, :id => "spinner", :style=>"display: none;" ) %>
+				</td>
+			</tr>
+		</table>
+<% end %>

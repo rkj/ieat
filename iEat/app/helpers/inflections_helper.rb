@@ -1,0 +1,3 @@
+module InflectionsHelper
+
+end

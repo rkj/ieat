@@ -1,0 +1,6 @@
+<div id="tag-cloud" style="padding-left: 100px; padding-right: 100px">
+<% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+  <%= link_to name, {:action => :show, :id => name},
+    :class => css_class %>
+<% end %>
+</div>

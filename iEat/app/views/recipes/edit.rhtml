@@ -1,0 +1,107 @@
+<div class="recipe-edit-step-panel">
+	<div class="recipe-header">
+		<table class="recipe-content">
+			<tr>
+				<td class="recipe-header">
+					<h2>Edit recipe</h2>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-content">
+			<tr>
+				<td class="recipe-content">
+					<%= error_messages_for 'recipe' %>
+					
+					<% form_for :recipe, :url => { :id => @recipe.id } do |f| %>
+					<table>
+						<tr>
+							<td>
+								Name
+							</td>
+							<td class="recipe-edit-input">
+								<%= f.text_field 'name'  %>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Number of servings
+							</td>
+							<td class="recipe-edit-input">
+								<%= f.text_field 'number_of_servings'  %>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Short description
+							</td>
+							<td class="recipe-edit-input">
+								<%= f.text_area 'description', :rows => 2 %>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Tags
+							</td>
+							<td class="recipe-edit-input">
+								<%= text_field_with_auto_complete :recipe, :tag_list, {},
+								 		:url => {:action => "auto_complete_for_Tag_name"}, 
+										:with => "'Tag[name]='+encodeURIComponent(element.value)",
+										:tokens => [',', ' '], :skip_style => true, :indicator => 'spinner' %>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								Time to prepare (in minutes)
+							</td>
+							<td class="recipe-edit-input">
+								<%= f.text_field 'minutes_to_prepare'  %>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="2" class="recipe-edit-submit">
+								<%= submit_tag "Save", :name => "save", :class => "common-button" %>
+							</td>
+						</tr>
+					</table>
+					<% end %>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="recipe-steps">
+					
+					<div id="steps">
+						<ul id="recipe-edit-list">
+					<%= render :partial => "recipe_step", :collection => @recipe.recipe_steps %>
+						</ul>
+					</div>
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="recipe-edit-footer">
+	<% unless @recipe.id.nil? %>		
+			<%=	link_to_remote( "Add step",
+					:url => { :action => "addRecipeStep", :id => @recipe.id },
+#					:success => sortableSteps(), problems with Safari
+					:update => "recipe-edit-list",
+					:position => "bottom"
+				)
+		 %>
+		<%= link_to "End editing", :action => "endEditingRecipe", :id => @recipe.id %>
+	<% end%>
+		<p id="list-info">
+		</p>		
+	</div>
+</div>
+
+<%= sortableSteps() %>

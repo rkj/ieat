@@ -1,0 +1,1 @@
+<li><%= link_to "<span>#{popular_tag.name} (#{recipesTaggedWith(popular_tag).length})</span>", { :controller => :tags, :action => :show, :id => popular_tag.name }, :class => "main" %></li>

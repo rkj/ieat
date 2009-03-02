@@ -1,0 +1,5 @@
+set :application, "iEat"
+set :domain,  "calypso.cs.put.poznan.pl"
+set :repository,  "svn+ssh://rkamyk@calypso.cs.put.poznan.pl/home/projects/swd-aiim/svnroot/iEat"
+set :deploy_to, "~/#{application}"
+set :mongrel_port, "9068"

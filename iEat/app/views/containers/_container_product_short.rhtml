@@ -1,0 +1,6 @@
+<% cpi = "container_product#{container_product_short.id}"%>
+<li id="<%=cpi%>">
+	<a class="main" href="/containers/<%= container_product_short.container.id %>">
+  	<span><%= h format_product(container_product_short) %></span>
+	</a>
+</li>

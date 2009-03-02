@@ -1,0 +1,92 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2><%= @user[:login] %> Profile</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					
+					<table class="user-profile">
+						<tr>
+							<% if (isFriend? (@user) || current_user == @user )%>
+							<td rowspan="6">
+							<% else %>
+							<td rowspan="5">
+							<%end%>
+								<%= image_tag(nilIfEmpty(@user.avatar) || "nouser.jpg", :alt => @user.login)%>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Sex:
+							</td>
+							<td>
+								<% if @user[:sex] %> <% if @user[:sex]==true %> Male <% else %> Female <% end %> <% else %> Undefined <% end %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Name:
+							</td>
+							<td class="user-profile-entry">
+								<%= @user[:first_name] %> <%= @user[:last_name]%>
+							</td>
+						</tr>
+						<% if (isFriend? @user) %>
+						<tr>
+							<td class="user-profile-label">
+								E-mail:
+							</td>
+							<td class="user-profile-entry">
+								<%= @user[:email] %>
+							</td>
+						</tr>
+						<% end %>
+						<% if (current_user == @user )%>
+						<tr>
+							<td class="user-profile-label">
+								E-mail:
+							</td>
+							<td class="user-profile-entry">
+								<%= @user[:email] %><br />
+								(Visible only to friends)
+							</td>
+						</tr>
+						<% end %>
+						<tr>
+							<td class="user-profile-label">
+								Date of birth:
+							</td>
+							<td class="user-profile-entry">
+								<%= @user[:date_of_birth] %>
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+		<% if current_user.id == @user[:id] %>
+			<%= link_to "Edit", :action => :edit, :controller => :users %>
+		<% else unless isFriend? @user %>
+			<%= link_to "Add to friends", :action => :add_friend, :controller => :users, :id => @user[:id] %>
+		<% end end%>
+		<% if current_user.id != @user[:id] %>
+			<%= link_to "Send message", :controller => :messages, :action => :compose, :id => @user[:id] %>
+		<% end %>
+	</div>
+</div>

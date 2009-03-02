@@ -1,0 +1,17 @@
+<h1>Shopping list:</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>You need</th>
+			<th>You have</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => "shopping_product", :collection => @products,  :locals => { :amounts => @amounts } %>
+	</tbody>
+</table>
+
+<% if (!@print) %>
+	<%= link_to "Printable version", :action => :printableShoppingList %>
+<% end %>

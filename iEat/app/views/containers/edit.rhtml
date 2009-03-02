@@ -1,0 +1,59 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Edit Container</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<%= error_messages_for :container %>
+					
+					<% form_for(@container) do |f| %>
+					  <table class="containers">
+							<tr>
+					    	<td>
+									Name
+								</td>
+								<td>
+					    		<%= f.text_field :name %>
+								</td>
+					  	</tr>
+					  <tr>
+					    <td>
+								Type
+							</td>
+							<td>
+							<% htmlOptions = {} %>
+							<% if (@container == current_user.containers[0])%>
+							<% htmlOptions[:disabled] = "true" %>
+							<% end %>
+					    	<%= collection_select(:container, :container_type_id, ContainerType.find(:all), :id, :name, {:prompt => true}, htmlOptions) %>
+							</td>
+					  </tr>
+						<tr>
+							<td colspan="2">
+					    	<%= f.submit "Save", :class => "common-button" %>
+							</td>
+						</tr>
+					  </table>
+					<% end %>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+		<%= link_to 'Show', @container %>
+		<%= link_to 'Back', containers_path %>
+	</div>
+</div>

@@ -1,0 +1,4 @@
+page.select("#friend_#{@id}").each do |el| 
+  page << efect_and_remove("value", "shrink")
+end
+page << show_first_nonvisible("#friends_div li")

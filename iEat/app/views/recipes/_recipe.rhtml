@@ -1,0 +1,22 @@
+<li class="recipe-list-item">
+	<%= link_to recipe.name, :action => :show, :controller => :recipes, :id => recipe.id %>
+	<br />
+	<div style="padding-left: 10px">
+	<%= nilIfEmpty(recipe.description) ? h(recipe.description) + "<br />": "" %>
+	Created by: <%= render :partial => "/users/user", :locals => { :user => recipe.owner } %> 
+	</div>
+	<span class="recipe-percentage">
+		Avalaible: <b><%= number_to_percentage(recipe.percentFulfilled(current_user.id)*100, :precision => 1) %></b>
+	</span>
+	<span>
+		Average rating: <b><%= recipe.averageRating %></b>
+	</span>
+	<br/>
+	<%= link_to "Edit", :action => :edit, :controller => :recipes, :id => recipe.id %>
+	<%= link_to_remote "Favourite!", {:url => {:controller => :recipes, :action => "addToFavourites", :id => recipe.id } }, :id => "add_to_fav_#{recipe.id}", :style => isFavourited(recipe) ? "display: none;" : "" %>
+	<%= link_to_remote "Add to menu", 
+			{:url => { :controller => :menus, :action => :addRecipe, :id => recipe.id },
+			:success => visual_effect(:fade, "add_to_menu_#{recipe.id}")}, 
+			:style => isSelectedRecipe(recipe) ? "display: none;" : "",
+			:id => "add_to_menu_#{recipe.id}"%>
+</li>

@@ -1,0 +1,124 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Edit <%= @user[:login] %>'s profile</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<%= error_messages_for 'user' %>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<% form_for :user, @user, :url => { :action => "edit" } do |f| %>
+					<table class="edit-user-profile">
+						<tr>
+							<td class="user-profile-label">
+								Avatar url:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field :avatar %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Sex:
+							</td>
+							<td>
+								<%= f.radio_button 'sex', 'true'%> &nbsp; Male
+							</td>
+							<td>
+								<%= f.radio_button 'sex', 'false' %> &nbsp; Female
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								First Name:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field :first_name %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Last Name:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field 'last_name', :value => @user[:last_name] %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								E-mail:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field 'email', :value => @user[:email] %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Date of birth:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field 'date_of_birth', :value => @user[:date_of_birth] %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Maximum items viewed:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= f.text_field 'max_viewed_items', :value => @user[:max_viewed_items] %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" style="border-top:dotted 1px #545454;">
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Old password:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= password_field_tag 'old_password' %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								New password:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= password_field_tag 'new_password' %>
+							</td>
+						</tr>
+						<tr>
+							<td class="user-profile-label">
+								Repeat new password:
+							</td>
+							<td colspan="2" class="user-profile-entry">
+								<%= password_field_tag 'repeat_new_password' %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" style="padding-left:0px; padding-top:10px;">
+								<%= submit_tag "Zapisz", :name => "save", :class => "common-button" %>
+							</td>
+						</tr>
+					</table>
+					<% end %>
+					
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+	</div>
+</div>

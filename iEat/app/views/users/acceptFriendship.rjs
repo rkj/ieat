@@ -1,0 +1,10 @@
+page.insert_html :bottom, "friends_list", :partial => "friendship", :locals => {:friendship => @newFriendship}
+page.insert_html :bottom, "friends_div", :partial => "friendship", :locals => {:friendship => @newFriendship}
+page.select("#friend_#{@friendship.user.id}").each { |v| v.grow() }
+page.visual_effect(:shrink, "awaiting_#{@friendship.user.id}")
+
+page << "function updateList() {"
+page.replace('friends_request_div', :partial => "/users/friendship_invitations")
+page << "}"
+page.visual_effect(:pulsate, 'friends_request_div', :afterFinish => 'updateList')
+page << hide_or_show_elements()

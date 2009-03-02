@@ -1,0 +1,20 @@
+<tr id="favouriteRecipe_<%= favourite.id %>">
+	<td>
+		<%= link_to favourite.name, :action => :show, :controller => :recipes, :id => favourite.id %> 
+	</td>
+	<td>
+		<%= nilIfEmpty(favourite.description) ? h("(#{favourite.description })"): "" %>
+	</td>
+	<td>
+		<%= link_to favourite.owner.login, :controller => :users, :action => :view, :id => favourite.owner.id  %> 
+	</td>
+	<td>
+		<%= number_to_percentage(favourite.percentFulfilled(current_user.id)*100, :precision => 1) %>
+	</td>
+	<td>
+		<%= link_to "Edit", :action => :edit, :controller => :recipes, :id => favourite.id %>
+		<%= link_to_remote "Remove", 
+			:url => {:action => :removeFromFavourites, :controller => :recipes, :id => favourite.id }, 
+			:method => :delete %>
+	</td>
+</tr>

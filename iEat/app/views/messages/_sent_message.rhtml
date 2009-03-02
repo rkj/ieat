@@ -1,0 +1,11 @@
+<tr id="message_<%= sent_message.id %>">
+	<td><%= distance_of_time_in_words Time.now, sent_message.date_created, false %> ago</td>
+	<td><%= render :partial => "/users/user", :locals => { :user => sent_message.addressee } %></td>
+	<td><%= link_to sent_message.subject, :action => 'show', :id => sent_message.id %></td>
+	<td><%= link_to_remote 'Remove', 
+			:url => { :action => :deleteAuthorMessage, :id => sent_message.id },
+			:confirm => "Are you sure?",
+			:method => :delete,
+			:update => "messages-menu",
+			:success => visual_effect(:fade, "message_#{sent_message.id}") %></td>
+</tr>

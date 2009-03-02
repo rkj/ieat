@@ -1,0 +1,15 @@
+<tr>
+	<td>
+		<%= shopping_product %>
+	</td>
+	<td>
+		<table>
+			<%= render :partial => "shopping_amount", :collection => amounts[shopping_product] %>
+		</table>
+	</td>
+	<td>
+		<table>
+			<%= render :partial => "shopping_amount", :collection => getAmountsFromFridgeForProduct(shopping_product) %>
+		</table>
+	</td>
+</tr>

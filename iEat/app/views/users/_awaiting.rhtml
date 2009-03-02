@@ -1,0 +1,4 @@
+<li id="awaiting_<%= awaiting.user_id %>">
+<%= render :partial => "/users/user", :locals => {:user => awaiting.user} %>
+<%= link_to_remote "Accept", :url => {:action => "acceptFriendship", :id => awaiting.id} %>
+</li>

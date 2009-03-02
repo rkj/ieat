@@ -1,0 +1,5 @@
+page.replace_html('errors', @err)
+page.visual_effect :highlight, 'flash'
+page.delay(5) do
+  page.replace_html('errors', '')
+end

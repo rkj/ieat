@@ -1,0 +1,18 @@
+<div id="messages-menu">
+<%= render :partial => "menu" %>
+</div>
+<br />
+<br />
+<table>
+	<thead>
+		<tr>
+			<td>Received</td>
+			<td>From</td>
+			<td>Subject</td>
+			<td>Actions</td>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => "received_message", :collection => @receivedMessages %>
+	</tbody>
+</table>

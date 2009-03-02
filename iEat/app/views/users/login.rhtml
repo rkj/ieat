@@ -1,0 +1,51 @@
+<div id="login-form">
+	
+	<% form_tag({:action => "do_login" }) do -%>
+	
+	<table class="login-table">
+		<tr>
+			<td class="login-table-label">
+				Login:
+			</td>
+			<td>
+				<%= text_field_tag 'login' %>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="login-table-label">
+				Password:
+			</td>
+			<td>
+				<%= password_field_tag 'password' %>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="login-table-label">
+				Remember me:
+			</td>
+			<td>
+				<%= check_box_tag 'remember_me' %>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				&nbsp;
+			</td>
+			<td>
+				<%= submit_tag 'Log in', :class => "login-button" %>
+			</td>
+		</tr>
+		
+		<tr>
+			<td id="login-newuser" colspan="2">
+					<%= link_to "New user", :action => "new_user"%>
+			</td>
+		</tr>
+	</table>
+		
+	<% end -%>
+	
+</div>

@@ -1,0 +1,18 @@
+<tr id="editedRecipe_<%= edited_recipe.id %>">
+	<td>
+		<%= link_to edited_recipe.name, :action => :show, :controller => :recipes, :id => edited_recipe.id %> 
+	</td>
+	<td>
+		<%= nilIfEmpty(edited_recipe.description) ? h("(#{edited_recipe.description })"): "" %>
+	</td>
+	<td>
+		<%= link_to edited_recipe.owner.login, :controller => :users, :action => :view, :id => edited_recipe.owner.id  %> 
+	</td>
+	<td>
+		<%= number_to_percentage(edited_recipe.percentFulfilled(current_user.id)*100, :precision => 1) %>
+	</td>
+	<td>
+		<%= link_to "Continue editing", :action => :edit, :controller => :recipes, :id => edited_recipe.id %>
+		<%= link_to_remote "End editing", :url => {:action => :endEditingRecipe, :controller => :recipes, :id => edited_recipe.id }%>
+	</td>
+</tr>

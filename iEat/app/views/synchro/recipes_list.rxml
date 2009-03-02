@@ -1,0 +1,11 @@
+xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
+xml.recipesList do
+  xml.recipes do
+    for r in @recipes
+      xml.recipe do
+        xml.id r.id
+        xml.name r.name
+      end
+    end
+  end
+end

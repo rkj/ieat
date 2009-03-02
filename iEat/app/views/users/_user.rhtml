@@ -1,0 +1,5 @@
+<%= image_tag(nilIfEmpty(user.avatar) || "avatar.png")%>
+<%= link_to user.login, :controller => "user", :action => user.login %>
+<% if user.first_name%>
+(<%= user.first_name %>)
+<% end%>

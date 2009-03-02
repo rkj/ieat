@@ -1,0 +1,9 @@
+Message to: <%= render :partial => "/users/user", :locals => { :user => @user }%>
+<br />
+
+<% form_tag :action => "sendMessage" do %>
+<%= hidden_field_tag "user_id", @user.id %>
+Subject: <%= text_field_tag "subject" %><br /><br />
+Message:<br /> <%= text_area_tag "message", nil, :rows => 10, :cols => 50 %><br />
+<%= submit_tag "Send", :class => "common-button" %>
+<% end %>

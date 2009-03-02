@@ -1,0 +1,47 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Containers</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<table class="containers">
+					  <tr>
+					  	<th>Name</th>
+					  	<th>Type</th>
+					  </tr>
+
+					<% for container in @containers %>
+					  <tr>
+					  	<td><%=h container.name %></td>
+					  	<td><%=h container.container_type.name %></td>
+					    <td><%= link_to 'Show', container %></td>
+					    <td><%= link_to 'Edit', edit_container_path(container) %></td>
+						<% if (container != current_user.containers[0]) %>
+					    <td><%= link_to 'Destroy', container, :confirm => 'Are you sure?', :method => :delete %></td>
+						<% else %>
+						<td></td>
+						<% end %>
+					  </tr>
+					<% end %>
+					</table>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+		<%= link_to 'New container', new_container_path %>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<h1><%= h @recipe.name %></h1>
+
+<div class="recipe-links">
+	<%= link_to "Edit", :action => :edit, :id => @recipe.id %>
+	<%= link_to_remote "Favourite!", {:url => {:action => "addToFavourites", :id => @recipe.id } }, :id => "add_to_fav_#{@recipe.id}", :style => isFavourited(@recipe) ? "display: none;" : "" %>
+</div>
+
+<h4><%= h @recipe.description %></h4>
+
+<div class="tag-list">
+	Tags: 
+	<%= render :partial => "/tags/tag", :collection => @recipe.tag_list %>
+</div>
+
+<%= render :partial => "show_recipe_step", :collection => @recipe.recipe_steps.sort_by { |a| a.step_order_no } %>
+
+<div class="comments-and-ratings">
+	<div id="ratings">
+		<%= render :partial => "ratings" %>
+	</div>
+	<br />
+	<br />
+	<h1 style="clear: both">Comments:</h1>
+
+	<div id="comments">
+	<%= render :partial => "show_comment", :collection => @recipe.recipe_comments %>
+	</div>
+	
+	<div id="new-comment">
+	</div>
+
+	<h1>Leave comment:</h1>
+	<%= form_remote_tag ( :url => { :action => :addComment, :id => @recipe.id },
+	 		:update => "new-comment",
+			:success => visual_effect(:pulsate, "new-comment") )%>
+		<%= text_area_tag "comment", nil, :rows => 10, :cols => 50 %>
+		<%= submit_tag "Add", :class => "common-button" %>
+	</form>
+</div>

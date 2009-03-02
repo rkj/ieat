@@ -1,0 +1,34 @@
+<%# button_to "Add recipe", {:action => :new}, {:class => "button"} %>
+
+<br style="clear:both" />
+
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Recipes</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<ul class="recipes">
+						<%= render :partial => "/recipes/recipe", :collection => @recipes %>
+					</ul>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+		<%= will_paginate @recipes %>
+	</div>
+</div>

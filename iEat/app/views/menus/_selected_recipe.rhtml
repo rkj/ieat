@@ -1,0 +1,6 @@
+<tr id="selected_recipe_<%= selected_recipe.id %>">
+	<td><%= link_to selected_recipe.name, :action => :show, :controller => :recipes, :id => selected_recipe.id %></td>
+	<td>Available products: <%= number_to_percentage(selected_recipe.percentFulfilled(current_user.id)*100, :precision => 1) %></td>
+	<td><%= link_to_remote "Remove", :url => { :action => :removeRecipe, :id => selected_recipe.id },
+			:success => visual_effect(:fade, "selected_recipe_#{selected_recipe.id}") %></td>
+</tr>

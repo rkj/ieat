@@ -1,0 +1,6 @@
+page << "var wasVisible = false"
+page.select("#favouriteRecipe_#{@recipe.id}").each do |e|
+  page << efect_and_remove("value")
+end 
+page << show_first_nonvisible("#fav_list li")
+page.select("#add_to_fav_#{@recipe.id}").each { |v| v.appear() }

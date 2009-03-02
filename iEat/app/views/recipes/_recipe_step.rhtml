@@ -1,0 +1,121 @@
+<% errorsId = "errors" + recipe_step.id.to_s() + "" 
+	ingredientsId = "ingredients#{recipe_step.id.to_s()}"
+%>
+<li id="recipe-edit-list-item_<%= recipe_step.id %>">
+	<div class="recipe-edit-step-panel">
+		<div class="recipe-step-header">
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipe-step-header">
+						<h2 id="recipe_title">Step <%= recipe_step.step_order_no %></h2>
+					</td>
+					<td>
+						<%= button_to_function "", :class => "tog collapseTog" do |page|
+								page.visual_effect :toggle_blind, "recipe-step-#{recipe_step.step_order_no}"
+						  end
+						%>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div id="recipe-step-<%= recipe_step.step_order_no %>">
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipe-edit-step-content">
+						<div id="<%= ingredientsId %>">
+							<%= render(:partial => "ingredients", :locals => { :ingredients => recipe_step.step_ingredients }) %>
+						</div>
+
+						<div id="<%= errorsId %>">
+						<%= error_messages_for 'ingredient' %>
+						<%= error_messages_for 'step_ingredient' %>
+						<%= error_messages_for 'unit' %>
+						<%= error_messages_for 'recipe_step' %>
+						</div>
+					
+						<div class="recipe-edit-add-ingredient">
+							<% 	form_remote_tag(
+									:url => {:action => "addStepIngredient", :id => recipe_step.id }, 
+									:update => { :success => ingredientsId, :failure => errorsId },
+									:before => "Element.show('spinner'); $('#{errorsId}').update('');",
+									:complete => "Element.hide('spinner')",	
+									:failure => 
+										"Element.show('#{errorsId}');" + 
+										visual_effect(:pulsate, errorsId) +
+										visual_effect(:fade, errorsId, :duration => 1, :delay => 10),
+									:success => visual_effect(:highlight, ingredientsId),	
+									:position => "bottom") do %>
+								<table>
+									<tr>
+										<th><label for="amount">Amount and unit</label></th>
+										<th><label for="ingredient_name">Ingredient's name</label></th>
+									</tr>
+									<tr>
+										<td>
+											<%= text_field_tag 'amount', params[:amount], :size => 3 %>
+											<%= text_field_with_auto_complete :unit, :name, {:size => 10}, :class => "recipe-edit-input", :skip_style => true %>
+										</td>
+										<td>
+											<%= text_field_with_auto_complete :product, :name, {}, :class => "recipe-edit-input", :class => "recipe-edit-input", :skip_style => true %>
+										</td>
+										<td style="padding-left:20px;">
+											<%= submit_tag "Add", :name => "add", :class => "common-button" %>
+											<%= image_tag("snake_transparent.gif", :align => 'absmiddle',
+										       :border=> 0, :id => "spinner", :style=>"display: none;" ) %>
+										</td>
+									</tr>
+								</table>
+							<% end %>
+						</div>
+
+						<% form_remote_for(
+								:recipe_step, recipe_step,
+								:url => { :action => "saveRecipeStep", :id => recipe_step.id },
+								:update => "steps",
+								:before => "Element.show('spinner')",
+								:complete => "Element.hide('spinner')",
+								:success => visual_effect(:highlight, 'steps'),
+								:position => :bottom) do |f| %>
+							<table>
+								<tr>
+									<td class="recipe-edit-step-label">
+										Name
+									</td>
+									<td class="recipe-edit-step-input">
+										<%= f.text_field 'name', :size => 41 %>
+									</td>
+								</tr>
+								<tr>
+									<td class="recipe-edit-step-label">
+										Directions
+									</td>
+									<td class="recipe-edit-step-input">
+										<%= f.text_area 'description', :rows => 6 %>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="padding-left:10px; padding-top:5px;">
+										<%= submit_tag "Save", :class => "common-button" %>
+									</td>
+								</tr>
+							</table>
+						<% end %>
+					</td>
+					<td class="recipe-step-shadow">
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div class="recipe-step-footer">
+			<%= link_to_remote "Remove", 
+				:update => "steps",
+				:url => { :action => :deleteRecipeStep, :id => recipe_step.id },
+				:position => "replace",
+				:confirm => "Are you sure?",
+				:method => :delete
+			%>
+		</div>
+	</div>
+</li>

@@ -1,0 +1,7 @@
+page.insert_html :bottom, "container_products_table", :partial => 'container_product', :locals => { :container_product => @container_product}
+# page.visual_effect(:highlight, "container_products_list")
+# page.insert_html :bottom, "container_products_list", "First: #{@first_container.inspect}"
+if @first_container
+  page.insert_html :top, "container_products", :partial => 'container_product_short', :locals => { :container_product_short => @container_product}
+  page << hide_or_show_elements()
+end

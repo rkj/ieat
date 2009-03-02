@@ -1,0 +1,40 @@
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Name: <%=h @container.name %> Type: <%=h @container.container_type.name %></h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<div id="errors"></div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<table>
+						<thead>
+							<th style="width: 130px;">Amount and product</th>
+							<th style="width: 200px;"></th>
+							<th></th>
+						</thead>
+						<tbody id="container_products_table">
+							<%= render :partial => "container_product", :collection => @container.container_products %>
+						</tbody>
+					</table>
+					<%= render :partial => "new_product" %>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="recipe-step-footer">
+		<%= link_to 'Edit', edit_container_path(@container) %>
+		<%= link_to 'Back', containers_path %>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<% if (@awaitings.length >0)%>
+	<div class="recipe-step-panel">
+		<div class="recipe-step-header">
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipe-step-header">
+						<h2>Friendship invitations</h2>
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class="recipe-step-content">
+				<tr>
+					<td class="recipes">
+						<ul id="awaitings_list">
+							<%= render :partial => "awaiting", :collection => @awaitings %>
+						</ul>
+					</td>
+					<td class="recipe-step-shadow">
+					</td>
+				</tr>
+			</table>
+	</div>
+	<div class="recipe-step-footer">
+	</div>
+	</div>
+<% end %>
+
+<div class="recipe-step-panel">
+	<div class="recipe-step-header">
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipe-step-header">
+					<h2>Friends</h2>
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="recipe-step-content">
+			<tr>
+				<td class="recipes">
+					<ul id="friends_list">
+					<%= render :partial => "friendship", :collection => @friendships %>
+					</ul>
+				</td>
+				<td class="recipe-step-shadow">
+				</td>
+			</tr>
+		</table>
+</div>
+<div class="recipe-step-footer">
+</div>
+</div>

@@ -1,0 +1,15 @@
+<tr>
+	<td><%= product.name %></td>
+	<td><span id="ip_<%= product.id %>">
+		<%=  nilIfEmpty(product.name_plural) || "[Brak]"  %>
+	</span>
+	<%= in_place_editor "ip_#{product.id}", 
+		:url => { :action => "set_product.name_plural", :id => product.id } %>
+	</td>
+	<td><span id="ig_<%= product.id %>">
+		<%= nilIfEmpty(product.name_genitive) || "[Brak]"  %>
+	</span>
+	<%= in_place_editor "ig_#{product.id}",
+		:url => { :action => "set_product.name_genitive", :id => product.id } %></td>
+	<td><%= link_to "Usuń", :action => :destroy_product, :id => product.id %></td>
+</tr>

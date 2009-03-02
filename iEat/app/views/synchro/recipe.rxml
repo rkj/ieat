@@ -1,0 +1,31 @@
+
+xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
+xml.recipe do
+  xml.id @recipe.id
+  xml.minutes_to_prepare @recipe.minutes_to_prepare
+  xml.name @recipe.name
+  xml.description @recipe.description 
+  xml.number_of_servings @recipe.number_of_servings
+  xml.owner_id @recipe.owner_id
+  xml.recipe_steps do
+    for rs in @recipe.recipe_steps
+      xml.recipe_step do 
+        xml.id rs.id
+        xml.name rs.name
+        xml.description rs.description
+        xml.step_order_no rs.step_order_no
+	  xml.step_ingredients do
+	
+        for si in rs.step_ingredients
+          xml.step_ingredients do
+            xml.id si.id
+            xml.product_id si.product_id
+            xml.unit_id si.unit_id
+            xml.amount si.amount
+          end
+        end
+	  end
+      end 
+    end 
+  end
+end

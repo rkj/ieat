@@ -1,0 +1,15 @@
+<% unreadCount = current_user.unreadMessagesCount %>
+<% if (unreadCount > 0) %>
+	<%= link_to "<b>Inbox (#{unreadCount} unread)</b>", :action => "inbox" %>
+<% else %>
+	<%= link_to "Inbox", :action => "inbox" %>
+<% end %>
+
+<%= link_to "Sent", :action => "sent" %>
+
+<% unreadCount = current_user.unreadDinnerInvitationsCount %>
+<% if (unreadCount > 0) %>
+	<%= link_to "<b>Dinner invitations (#{unreadCount} unread)</b>", :action => "invitations" %>
+<% else %>
+	<%= link_to "Dinner invitations", :action => "invitations" %>
+<% end %>
